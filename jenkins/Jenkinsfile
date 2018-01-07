@@ -1,4 +1,6 @@
-properties([parameters([string(name: 'Bucket_Name', defaultValue1: 'mounisbucket/jenkins-wars' , defaultValue2: 'mounisbucket2/jenkin-wars')])])
+properties([parameters([string(name: 'Bucket_Name1', defaultValue1: 'mounisbucket/jenkins-wars')])])
+properties([parameters([string(name: 'Bucket_Name2', defaultValue2: 'mounisbucket2/jenkins-wars')])])
+
 pipeline {
     agent {
         docker {
@@ -45,8 +47,15 @@ pipeline {
         }
         stage('Store-in-S3') {
             steps {
-                sh "aws s3 cp /var/lib/jenkins/workspace/mounika/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name}/"
+                sh "aws s3 cp /var/lib/jenkins/workspace/mounika/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name1}/"
             }
+            
+        }
+        stage('Store-in-S3 2') {
+            steps {
+                sh "aws s3 cp /var/lib/jenkins/workspace/mounika/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name2}/"
+            }
+            
         }
     }
 }

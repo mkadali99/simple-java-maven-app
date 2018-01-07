@@ -1,4 +1,4 @@
-properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'mounisbucket/jenkins-wars'),(name: 'Bucket_Name2', defaultValue: 'mounisbucket2/jenkins-wars')]
+properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'mounisbucket/jenkins-wars'),(name: 'Bucket_Name2', defaultValue: 'mounisbucket2/jenkins-wars')])]
 
 pipeline {
     agent {

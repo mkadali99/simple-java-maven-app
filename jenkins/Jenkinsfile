@@ -47,10 +47,11 @@ pipeline {
         stage('Store-in-S3') {
             steps {
                 sh "aws s3 cp /var/lib/jenkins/workspace/mounika/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name1}/"
+                  println "Do you wish to continue?"
             }
-            steps{
-                println "Do you wish to continue?"
-            }
+            
+              
+            
             
         }
         stage('Store-in-S32') {

@@ -1,5 +1,5 @@
 properties([parameters([string(name: 'Bucket_Name1', defaultValue: 'mounisbucket/jenkins-wars'),string(name: 'Bucket_Name2', defaultValue: 'mounisbucket2/jenkins-wars'),string('yes'),string('no')])])
-
+def alert = com.eviware.soapui.support.UISupport;
 pipeline {
     agent {
         docker {
@@ -47,7 +47,11 @@ pipeline {
         stage('Store-in-S3') {
             steps {
                 sh "aws s3 cp /var/lib/jenkins/workspace/mounika/target/my-app-1.0-SNAPSHOT.jar s3://${params.Bucket_Name1}/"
-                  println "Do you wish to continue?"
+                 
+            }
+            steps{
+            alert.showInfoMessage("Do you want to proceed?");
+
             }
             
               
